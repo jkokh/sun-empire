@@ -2,8 +2,6 @@ services:
   app:
     build: .
     container_name: sun-app
-    ports:
-      - "3000:8084"
     depends_on:
       - mysql
     env_file:
