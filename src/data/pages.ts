@@ -43,7 +43,7 @@ export const data: Page[] = [
     },
     {
         id: 'home',
-        title: 'Home Page',
+        title: 'Sun Empire The Band',
         metaDescription: 'Welcome to our website, explore our services.'
     },
     {
