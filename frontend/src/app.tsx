@@ -9,25 +9,18 @@ import { monitorTokenExpiration } from './misc/monitorTokenExpiration';
 import UserDropdownMenu from './components/UserDropdownMenu/UserDropdownMenu';
 import 'aos/dist/aos.css';
 import AOS from 'aos';
-import { Carousel } from './components/Carousel/Carousel';
-import { Hero } from './components/Hero/Hero';
 import { navbar } from './misc/navbar';
 import { ForgotPassword } from './components/ForgotPassword/ForgotPassword';
 import { ResetPassword } from './components/PasswordReset/ResetPassword';
-import { Categories } from './components/admin/Categories/Categories';
-import { Products } from './components/admin/Products/Products';
+
 
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 import en from './locales/en';
-import es from './locales/es';
-import ru from './locales/ru';
 
 const resources: any = {
     en,
-    ru,
-    es
 };
 
 i18n
@@ -72,11 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     safeRender(Register, 'register');
     safeRender(ForgotPassword, 'forgotPassword');
     safeRender(Login, 'login');
-    safeRender(Carousel, 'carousel');
-    safeRender(Hero, 'hero');
     safeRender(ResetPassword, 'resetPassword');
-    safeRender(Categories, 'categories');
-    safeRender(Products, 'products');
     AOS.init({
         duration: 1000,
         once: true,

@@ -1,5 +1,5 @@
 import axios, { AxiosProgressEvent } from 'axios';
-import { ProductModel, UserModel } from '@tsed/prisma-models';
+import { UserModel } from '@tsed/prisma-models';
 import { TreeNode } from '@/types/categoryTypes.ts';
 import { ImageUploadResponse, LoginData } from '../../../src/types';
 
@@ -16,16 +16,6 @@ api.interceptors.request.use(
     }
 );
 
-const formatDecimal = (value: any): number => parseFloat(parseFloat(value.toString()).toFixed(2));
-
-const processProductDecimals = (product: ProductModel): ProductModel => ({
-    ...product,
-    price: formatDecimal(product.price),
-    discount: product.discount != null ? formatDecimal(product.discount) : null,
-    weight: product.weight != null ? formatDecimal(product.weight) : null,
-    shippingCost: product.shippingCost != null ? formatDecimal(product.shippingCost) : null,
-});
-
 export const registerUser = (userData: UserModel) => api.post('/api/users/register', userData);
 
 export const loginUser = (loginData: LoginData) => api.post('/api/users/login', loginData);
@@ -40,24 +30,6 @@ export const logoutUser = () => api.get('/api/users/logout');
 export const keepAlive = () => api.get('/api/users/keep-alive');
 
 export const getCategories = () => api.get('/api/cp/categories');
-
-export const addProduct = async (product: ProductModel): Promise<ProductModel> => {
-    const response = await api.post('/api/cp/products', product);
-    return processProductDecimals(response.data);
-};
-
-export const updateProduct = async (product: ProductModel): Promise<ProductModel> => {
-    const response = await api.put(`/api/cp/products/${product.id}`, product);
-    return processProductDecimals(response.data);
-};
-
-export const getProducts = async (page: number, perPage: number): Promise<{ total: number; products: ProductModel[] }> => {
-    const response = await api.get('/api/cp/products', { params: { page, perPage } });
-    return {
-        total: response.data.total,
-        products: response.data.products.map(processProductDecimals),
-    };
-};
 
 export const deleteProduct = (id: number) =>
     api.delete(`/api/cp/products/${id}`);

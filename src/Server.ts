@@ -2,8 +2,6 @@ import path from 'path';
 import dotenv from 'dotenv-flow';
 import i18n from 'i18n';
 import en from './locales/en';
-import ru from './locales/ru';
-import es from './locales/es';
 
 dotenv.config();
 
@@ -24,13 +22,11 @@ import { PICTURES_FOLDER } from './constants/picturesFolder';
 
 
 i18n.configure({
-  locales: ['en', 'ru', 'es'],
+  locales: ['en'],
   staticCatalog: {
     en: flatten(en),
-    ru: flatten(ru),
-    es: flatten(es),
   },
-  defaultLocale: 'ru',
+  defaultLocale: 'en',
   autoReload: true,
   syncFiles: true,
   queryParameter: 'lang',

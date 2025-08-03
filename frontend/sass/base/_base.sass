@@ -8,7 +8,10 @@ body, html
   @extend .lato-regular
   display: flex
   flex-direction: column
-  background-color: vars.$mainColor
+  //align-items: center
+  justify-content: center
+  text-align: center
+  background-color: vars.$black
   font-size: 18px
   line-height: 30px
   color: vars.$black
@@ -22,14 +25,15 @@ h1, h2, h3, h4, h5
 
 h1
   line-height: 50px
-  margin-bottom: 40px
+  margin-bottom: 20px
   font-size: 35px
 
 .main-wrapper
-  background-color: vars.$lightgray
+  background-color: vars.$mainColor
   flex-grow: 1
   display: flex
   flex-direction: column
+  color: vars.$white
 
 main
   flex-grow: 1
@@ -64,3 +68,14 @@ a
   transition: color .2s ease
   &:hover
     color: color.adjust(vars.$mainColor, $lightness: -28%)
+
+.logo
+  margin: 0 auto
+  margin-bottom: 20px
+  display: block
+  background-image: url("@root/public/images/se.svg")
+  background-repeat: no-repeat
+  background-size: contain
+  background-position: center
+  width: 450px
+  height: 450px
