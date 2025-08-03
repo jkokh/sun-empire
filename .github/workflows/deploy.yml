@@ -48,6 +48,6 @@ jobs:
             git pull origin ${{ env.BRANCH_NAME }}
             export NODE_ENV="${{ env.NODE_ENV }}"
             cp ../.env.sun .env.prod
-            docker-compose up -d --build
+            docker compose up -d --build
             echo "Deployment completed successfully"
             docker ps -a
