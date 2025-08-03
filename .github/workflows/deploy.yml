@@ -47,7 +47,7 @@ jobs:
             git reset --hard origin/${{ env.BRANCH_NAME }}
             git pull origin ${{ env.BRANCH_NAME }}
             export NODE_ENV="${{ env.NODE_ENV }}"
-            cp ../.env.sun .env.prod
+            cp ../.env.sun .env
             docker compose up -d --build
             echo "Deployment completed successfully"
             docker ps -a
