@@ -1,0 +1,16 @@
+extends ../layout.pug
+
+
+block content
+  main.forgot-password-page
+    .window
+      h1.window-header Reset Link Expired or Invalid
+      .window-content
+        .message-with-icon
+          .icon.warning-icon-md
+          div
+            | The link you have clicked to reset your password has either expired or is invalid.
+            | This can happen if the link has already been used or if too much time has passed since it was sent.
+            | Please
+            a(href="/forgot-password") request a new password reset
+            |  to receive a new link.

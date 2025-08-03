@@ -1,0 +1,7 @@
+@use "../misc/mixins" as mix
+
+$icon-sizes: ("sm": 30px, "md": 90px, "lg": 120px)
+
+$icons: (check-circle, stop-gray, warning)
+
++mix.generate-icons($icons, $icon-sizes)

@@ -1,0 +1,10 @@
+extends ../layout.pug
+
+
+block content
+    main.dashboard-page
+        section
+            h1!= __('dashboard.title')
+            if user
+                p!= __('dashboard.welcomeMessage', { firstname: user.firstname, lastname: user.lastname })
+                p!= __('dashboard.reminder')

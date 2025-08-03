@@ -1,0 +1,10 @@
+.menu-admin
+    ul
+        li(class=(page.id === 'cp/categories' ? 'nav-active' : ''))
+            a(href=localizedUrl('cp/categories'))
+                span.iconify(data-icon="ant-design:unordered-list-outlined" data-inline="false")
+                |  #{__('controlPanel.menu.categories')}
+        li(class=(page.id === 'cp/products' ? 'nav-active' : ''))
+            a(href=localizedUrl('cp/products'))
+                span.iconify(data-icon="ant-design:appstore-outlined" data-inline="false")
+                |  #{__('controlPanel.menu.products')}

@@ -1,0 +1,66 @@
+@use 'sass:color'
+@use "../base/variables" as vars
+@use "../misc/breakpoints" as bp
+@use "../misc/mixins" as mix
+@use "../base/fonts"
+
+body, html
+  @extend .lato-regular
+  display: flex
+  flex-direction: column
+  background-color: vars.$mainColor
+  font-size: 18px
+  line-height: 30px
+  color: vars.$black
+
+h1, h2, h3, h4, h5
+  @extend .pattaya
+  letter-spacing: 2px
+  font-weight: bold
+  line-height: initial
+  text-transform: initial
+
+h1
+  line-height: 50px
+  margin-bottom: 40px
+  font-size: 35px
+
+.main-wrapper
+  background-color: vars.$lightgray
+  flex-grow: 1
+  display: flex
+  flex-direction: column
+
+main
+  flex-grow: 1
+  +mix.content-width
+  +mix.content-padding
+  +bp.lg
+    padding-top: 130px
+  +bp.sm-md
+    padding-top: 110px
+
+h2
+  font-size: 1.3rem
+  margin-bottom: 20px
+
+section
+  margin-bottom: 50px
+
+  p, &:last-child
+    margin-bottom: 30px
+
+.text-content
+  ol, ul
+    list-style-position: inside
+    margin-left: 20px
+
+    li
+      padding-left: 10px
+      line-height: 1.5
+
+a
+  color: color.adjust(vars.$mainColor, $lightness: -15%)
+  transition: color .2s ease
+  &:hover
+    color: color.adjust(vars.$mainColor, $lightness: -28%)

@@ -1,0 +1,39 @@
+@use 'sass:color'
+@use "../base/variables" as vars
+@use "../misc/breakpoints" as bp
+@use "../misc/mixins" as mix
+
+.window
+  background-color: vars.$white
+  margin-left: auto
+  margin-right: auto
+  +mix.border-radius
+  +mix.drop-shadow
+
+  .window-header
+    padding: 10px 30px
+    background-color: color.adjust(#000000, $lightness: 90%)
+    font-size: 1.5rem
+    margin: 0
+    color: color.adjust(vars.$black, $lightness: 25%)
+
+  .window-content
+    padding: 30px
+
+  .message-with-icon
+    display: flex
+
+    .icon
+      margin-right: 25px
+      margin-top: 5px
+
+  .window-buttons
+    text-align: right
+    border-top: 1px solid vars.$gray
+    padding: 15px 30px
+
+    button
+      min-width: 100px
+      margin-right: 10px
+      &:last-child
+        margin-right: 0

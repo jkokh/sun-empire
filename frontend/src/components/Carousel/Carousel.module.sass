@@ -1,0 +1,100 @@
+@use 'sass:color'
+@use '@root/sass/misc/mixins' as mix
+@use '@root/sass/misc/breakpoints' as bp
+@use '@root/sass/base/variables' as vars
+
+.slider
+  list-style: none
+  color: black
+  position: relative
+  margin-bottom: 20px
+
+  @include bp.above(1024px)
+    .isActive
+      scale: 1.1
+
+.slide
+  position: relative
+  padding: 20px
+  font-size: 15px
+  line-height: 23px
+  text-align: left
+  @include mix.border-radius
+  cursor: pointer
+  min-height: 350px
+  transition: transform 400ms linear
+  transform: scale(0.97)
+  margin-top: 20px
+  margin-bottom: 20px
+  background-color: color.adjust(vars.$white, $lightness: -6%)
+  @include mix.drop-shadow(10px)
+
+.swiperWrapper
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+  margin-left: auto
+  margin-right: auto
+
+  .prev, .next
+    position: absolute
+    top: 50%
+    font-size: 40px
+    z-index: 10
+    display: inline-block
+    min-width: 32px
+    min-height: 32px
+    background-repeat: no-repeat
+    background-size: cover
+    transition: margin-top .2s ease
+    transform: translateY(-50%)
+    cursor: pointer
+
+    &:active
+      margin-top: 4px
+
+
+  .prev
+    left: -35px
+    background-image: url("../../../public/images/icons/left.svg")
+
+  .next
+    right: -35px
+    background-image: url("../../../public/images/icons/right.svg")
+
+.image
+  background-repeat: no-repeat
+  background-size: contain
+  background-position: center
+  width: 100%
+  height: 100%
+  position: relative
+  z-index: 10
+
+.imageWrapper
+  position: relative
+  width: 100%
+  height: 200px
+  overflow: hidden
+  @include mix.border-radius
+  margin-bottom: 10px
+
+.imageBlur
+  background-position: center
+  filter: blur(5px)
+  background-size: cover
+  position: absolute
+  top: -10%
+  left: -10%
+  width: 120%
+  height: 120%
+
+.text
+  font-size: 13px
+  line-height: 18px
+  padding: 7px
+  margin: -7px
+
+.selected
+  cursor: pointer

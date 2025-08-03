@@ -1,0 +1,54 @@
+@use 'breakpoints' as bp
+@use '../base/variables' as vars
+
+@mixin icon-size($size)
+  @if $size
+    width: $size
+    height: $size
+    min-width: $size
+    min-height: $size
+
+@mixin icon-base($name)
+  display: inline-block
+  background: url('/public/images/icons/#{$name}.svg') no-repeat center center
+  background-size: contain
+  width: 16px
+  height: 16px
+  text-indent: -9999px
+  overflow: hidden
+
+@mixin icon($name, $icon-sizes)
+  @each $size-key, $size-value in $icon-sizes
+    .#{$name}-icon-#{$size-key}
+      +icon-base($name)
+      +icon-size($size-value)
+
+@mixin generate-icons($icons, $icon-sizes)
+  @each $icon-name in $icons
+    +icon($icon-name, $icon-sizes)
+
+@mixin expand-window-sm-md()
+  +bp.sm-md
+    padding: 70px 0 0
+    margin-left: 0
+    margin-right: 0
+    .window
+      height: 100%
+      max-width: initial
+
+@mixin drop-shadow($spread: 20px, $opacity: 0.15)
+  box-shadow: 0 0 $spread rgba(0, 0, 0, $opacity)
+
+@mixin border-radius()
+  border-radius: 6px
+
+@mixin content-width()
+  max-width: vars.$site-width
+  margin-left: auto
+  margin-right: auto
+  width: 100%
+
+@mixin content-padding()
+  padding: 40px
+  +bp.lg
+    padding: 60px

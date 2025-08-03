@@ -1,0 +1,13 @@
+@use "../base/variables" as vars
+@use "../misc/breakpoints" as bp
+@use "../misc/mixins" as mix
+
+.verify-email-page
+  .window
+    max-width: 550px
+
+  .verify-email-login-header
+    margin-bottom: 30px
+    margin-top: 30px
+
+  +mix.expand-window-sm-md

@@ -1,0 +1,14 @@
+@use "@root/sass/base/variables" as vars
+@use "@root/sass/misc/breakpoints" as bp
+
+
+.keepSignedIn
+  margin-bottom: 0
+  order: 0
+
+@include bp.lg
+  .keepSignedIn
+    order: 1
+    display: block
+    margin-left: 30px
+    margin-bottom: 0

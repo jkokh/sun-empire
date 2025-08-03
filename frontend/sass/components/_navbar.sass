@@ -1,0 +1,206 @@
+@use 'sass:color'
+@use "../base/variables" as vars
+@use "../misc/mixins" as mix
+@use "../misc/breakpoints" as bp
+
+nav
+  $blur: 12px
+  color: vars.$lightgray
+  text-align: center
+  z-index: 100
+  width: 100%
+  position: relative
+  text-transform: uppercase
+  font-size: .9rem
+  letter-spacing: .02rem
+  font-weight: 500
+
+  .nav-wrapper
+    background-color: rgba(225, 43, 42, 0.85)
+    backdrop-filter: blur($blur)
+    -webkit-backdrop-filter: blur($blur)
+    position: absolute
+    top: 0
+    left: 0
+    transition: transform .4s ease
+    height: 70px
+    width: 100%
+
+    ul
+      display: flex
+      align-items: center
+      margin-left: auto
+      margin-right: auto
+      position: relative
+      height: 100%
+      +mix.content-width
+      padding: 0 40px 0 250px
+
+      +bp.sm-only
+        padding-left: 130px
+      +bp.lg
+        padding-right: 60px
+
+    li
+      white-space: nowrap
+      height: 100%
+      display: flex
+      align-items: center
+      position: relative
+      overflow: hidden
+      transition: .3s ease background-color
+
+    .nav-item
+      +bp.sm-md
+        display: none
+
+      a
+        padding-left: 15px
+        padding-right: 15px
+        width: 100%
+        height: 100%
+        display: flex
+        align-items: center
+        text-decoration: none
+        color: white
+        position: relative
+
+      &:after
+        content: ''
+        display: inline-block
+        width: 100%
+        height: 5px
+        background-color: orange
+        position: absolute
+        bottom: 0
+        left: 0
+        z-index: 5
+        transform: translateY(100%)
+
+      &.nav-active
+        background-color: rgb(255 255 255 / 8%)
+        &:after
+          transform: translateY(0%)
+
+      &:hover
+        background-color: rgb(255 255 255 / 15%)
+
+    .logo
+      $width: 231px
+      position: absolute
+      top: 0
+      left: 0
+      background-image: url("@root/public/images/logo.png")
+      background-repeat: no-repeat
+      background-size: contain
+      background-position: center
+      width: $width
+      height: 89px
+      display: inline-block
+      margin-top: 5px
+
+      a
+        display: block
+        height: 100%
+        text-decoration: none
+        &:hover
+          text-decoration: none
+
+      +bp.sm-md
+        background-image: url("@root/public/images/logo.png")
+        width: 100px
+        height: 70px
+        margin-top: 0
+        margin-left: 30px
+
+
+    ul.big-logo
+      padding-left: 125px
+      +bp.lg
+        padding-left: 180px
+
+      .logo
+        $ratio: 1
+        $width: 200px
+        width: $width
+        height: $ratio * $width
+        transition: .4s ease-in-out transform
+        background-image: url("@root/public/images/logo.png")
+        $width: 65px
+        margin-top: 0
+        +bp.md-only
+          width: $width
+          height: $ratio * $width
+
+    .login
+      margin-left: auto
+
+    .user-menu
+      margin-left: auto
+      margin-right: 5px
+
+    // SMALL VERSION (fixed)
+    &.small
+      background-color: rgba(225, 43, 42, 0.85)
+      transform: translateY(-100px)
+      height: 40px
+      position: fixed
+      font-size: 0.7rem
+      letter-spacing: 0.04rem
+      +mix.drop-shadow(10px, 0.5)
+
+      ul
+        padding-left: 110px
+      .nav-item
+        a
+          line-height: .9rem
+          text-shadow: 0 -1px 2px #000
+        &:after
+          display: none
+      &.show
+        transform: translateX(0)
+      .logo
+        margin-top: 0
+        margin-left: 60px
+        top: 0
+        left: 0
+        width: 40px
+        height: 40px
+        background-image: url("@root/public/images/logo.png")
+        +bp.sm-md
+          margin-left: 40px
+
+.sign-in-btn
+  font-family: 'PT Sans', serif
+  list-style: none
+  margin: 0
+  box-sizing: border-box
+  outline: none
+  position: relative
+  display: inline-block
+  font-weight: 400
+  white-space: nowrap
+  text-align: center
+  border: 1px solid transparent
+  cursor: pointer
+  transition: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1)
+  user-select: none
+  touch-action: manipulation
+  font-size: 17px
+  line-height: 1.4705882352941178
+  height: 45px
+  padding: 9px 15px
+  box-shadow: 0 2px 0 rgba(11, 83, 27, 0.18)
+  +mix.border-radius
+  color: vars.$white
+  background: vars.$primary
+  &:hover
+    background: color.adjust(vars.$primary, $lightness: 12%)
+  &:active
+    background: vars.$primary
+
+.small
+  .sign-in-btn
+    height: auto
+    padding: 2px 9px
+    font-size: .85rem

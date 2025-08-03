@@ -1,0 +1,59 @@
+@use '@root/sass/misc/breakpoints' as bp
+@use '@root/sass/base/variables' as vars
+
+.slider
+  list-style: none
+  color: black
+  position: relative
+  margin-bottom: -70px
+
+.slide
+  position: relative
+  font-size: 15px
+  line-height: 23px
+  text-align: left
+  cursor: pointer
+  height: 220px
+  transition: transform 400ms linear
+  overflow: hidden
+  display: flex
+  justify-content: center
+
+  @include bp.md-only
+    height: 300px
+  @include bp.lg
+    height: 430px
+
+  video
+    position: absolute
+    top: 0
+    left: 50%
+    transform: translateX(-50%)
+    height: 100%
+    width: 100%
+    object-fit: cover
+
+.swiperWrapper
+  position: relative
+
+.prev, .next
+  font-size: 40px
+  z-index: 10
+  display: inline-block
+  min-width: 40px
+  min-height: 40px
+  opacity: 0.5
+  top: 50%
+  background-repeat: no-repeat
+  background-size: cover
+  transition: margin-top .2s ease
+  position: absolute
+  cursor: pointer
+
+.prev
+  left: 20px
+  background-image: url("../../../public/images/icons/left.svg")
+
+.next
+  right: 20px
+  background-image: url("../../../public/images/icons/right.svg")

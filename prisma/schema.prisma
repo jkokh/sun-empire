@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator tsed {
+  provider = "tsed-prisma"
+  output   = "../node_modules/@tsed/prisma-models"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                  Int       @id @default(autoincrement())
+  email               String    @unique
+  username            String    @unique
+  password            String
+  firstname           String
+  lastname            String
+  role                Role      @default(USER)
+  verifyToken         String?   @unique
+  resetToken          String?   @unique
+  emailVerified       Boolean   @default(false)
+  tokenCreatedAt      DateTime? @default(now())
+  resetTokenCreatedAt DateTime? @default(now())
+  createdAt           DateTime  @default(now())
+  birthdate           DateTime?
+  gender              Gender?
+
+  @@index([tokenCreatedAt], map: "idx_tokenCreatedAt")
+  @@map("users")
+}
+
+model TokenValidity {
+  userId    Int
+  deviceId  String
+  validFrom DateTime
+
+  @@id([userId, deviceId])
+  @@map("token_validity")
+}
+
+enum Role {
+  USER
+  SUPERADMIN
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}

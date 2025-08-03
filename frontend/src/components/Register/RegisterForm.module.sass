@@ -1,0 +1,44 @@
+@use "@root/sass/base/variables" as vars
+@use "@root/sass/misc/breakpoints" as bp
+
+.inputsContainer
+  margin-bottom: 3px
+  display: grid
+
+.groupLeft, .groupRight
+  flex-grow: 1
+
+.checkboxContainer
+  margin-top: 10px
+
+.success
+  margin-bottom: 30px
+
+.loginForm
+  max-width: 550px
+
+.regButtonLine
+  display: flex
+  flex-direction: column
+
+  button
+    order: 1
+    min-width: 150px
+
+.regCheckbox
+  order: 0
+
+@include bp.lg
+  .inputsContainer
+    grid-template-columns: 1fr 1fr
+    grid-gap: 0 50px
+
+  .checkboxContainer
+    grid-column: 1 / span 2
+
+  .regButtonLine
+    flex-direction: row
+
+    .regCheckbox
+      margin-left: 50px
+      order: 2

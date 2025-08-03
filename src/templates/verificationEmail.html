@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <title>Shop verification email</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style type="text/css">
+        body {
+            margin: 0;
+            background-color: #eaeaea;
+        }
+        table {
+            border-spacing: 0;
+        }
+        td {
+            padding: 0;
+        }
+        img {
+            border: 0;
+        }
+        .wrapper {
+            width: 100%;
+            table-layout: fixed;
+            background-color: #cccccc;
+            margin-bottom: 60px;
+        }
+        .main {
+            background-color: #ffffff;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 600px;
+            border-spacing: 0;
+            font-family: sans-serif;
+            color: #171a1b;
+        }
+        .button {
+            background-color: #fa2e75;
+            color: white;
+            padding: 15px 30px;
+            display: inline-block;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<center class="wrapper">
+    <table class="main" width="100%">
+        <tr>
+            <td height="8" style="background-color: #071d73;padding: 25px 30px">
+                <a href="https://band.ink" target="_blank">
+                    <img src="https://dv.band.ink/images/logo-horizontal-2x.png" alt="logo" width="250" height="52"/>
+                </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <table style="padding: 30px">
+                                <tr>
+                                    <td>
+                                        Dear {{name}},
+                                        <br>
+                                        <br>
+                                        Thank you for registering!
+                                    </td>
+                                </tr>
+                            </table>
+                            <table style="background-color: #f4f4ff;padding: 30px">
+                                <tr>
+                                    <td>
+                                        To complete your registration and ensure that we have your correct email address, please verify your email by clicking on the button below:
+                                        <table>
+                                            <tr>
+                                                <td style="padding-top: 30px">
+                                                    <a href="{{verificationUrl}}" style="color: #fff" class="button" target="_blank">
+                                                        Verify Email
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table style="padding: 30px">
+                                <tr>
+                                    <td>
+                                        If you did not create an account with Shop, no further action is required.
+                                        <br>
+                                        <br>
+                                        Thank you for taking the time to confirm your email. We're excited to have you on board and look forward to serving you!
+                                        <br>
+                                        <br>
+                                        <br>
+                                        Best regards,<br>
+                                        The Shop Team
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td style="background-color: #071d73;color: #ffffff; padding: 30px">
+                <table width="100%">
+                    <tr>
+                        <td style="font-size: 0.9rem">
+                            &copy; 2024 Shop
+                        </td>
+                        <td style="text-align: right;">
+                            <a href="https://band.ink" target="_blank">
+                                <img src="https://dv.band.ink/images/logo-small-2x.png" alt="Logo Small" width="100" height="20"/>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</center>
+</body>
+</html>

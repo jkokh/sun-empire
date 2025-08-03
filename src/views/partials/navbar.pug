@@ -1,0 +1,34 @@
+mixin navLinks(user, page)
+    li.logo: a(href=localizedUrl('')) &nbsp;
+    if user
+        li(class="nav-item" + (page.id === 'dashboard' ? ' nav-active' : ''))
+            a(href=localizedUrl('dashboard'))
+                span= __('navbar.dashboard')
+        if user.role === 'SUPERADMIN'
+            li(class="nav-item" + (page.id.startsWith('cp') ? ' nav-active' : ''))
+                a(href=localizedUrl('cp'))
+                    span= __('navbar.cp')
+    else
+        li(class="nav-item" + (page.id === 'register' ? ' nav-active' : ''))
+            a(href=localizedUrl('register'))
+                span= __('navbar.createAccount')
+    li(class="nav-item" + (page.id === 'contacts' ? ' nav-active' : ''))
+        a(href=localizedUrl('contacts'))
+            span= __('navbar.contacts')
+    if user
+        li#userDropdownMenu.user-menu
+    else
+        li.login
+            a(href=localizedUrl('login'))
+                button.sign-in-btn= __('navbar.signIn')
+
+
+
+nav#navbar
+    .nav-wrapper
+        ul(class="big" + (page.id === 'home' ? ' big-logo' : ''))
+            +navLinks(user, page)
+
+    .nav-wrapper.small(style="transform: translateY(-100%)")
+        ul
+            +navLinks(user, page)

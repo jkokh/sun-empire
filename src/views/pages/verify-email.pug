@@ -1,0 +1,24 @@
+extends ../layout.pug
+
+block content
+    main.verify-email-page
+        .window
+            h1.window-header Email Verification
+            .window-content
+                if locals.verificationResult === 'Verified'
+                    .message-with-icon
+                        .icon.check-circle-icon-md
+                        | Congratulations! Your email has been successfully verified.
+                        | You can now access all features available to verified users.
+                    if !user
+                        .verify-email-login-header You're ready to go! Please log in to continue.
+                        #login
+                else if locals.verificationResult === 'Unchanged'
+                    .message-with-icon
+                        .icon.stop-gray-icon-md
+                        | Your email has already been verified. No further action is required.
+                else if locals.verificationResult === 'NotFound'
+                    .message-with-icon
+                        .icon.warning-icon-md
+                        | Sorry, we could not find a verification record for your request.
+                        | Please ensure the link is correct or contact support for assistance.

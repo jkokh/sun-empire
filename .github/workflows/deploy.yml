@@ -1,0 +1,53 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - develop
+      - main
+
+concurrency:
+  group: build-and-deploy-global
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker
+        uses: docker/setup-buildx-action@v3
+
+      # Set NODE_ENV and determine the branch name for deployment
+      - name: Set environment variable
+        run: |
+          if [ "${{ github.ref }}" == "refs/heads/develop" ]; then
+            echo "NODE_ENV=development" >> $GITHUB_ENV
+            echo "BRANCH_NAME=develop" >> $GITHUB_ENV
+          elif [ "${{ github.ref }}" == "refs/heads/main" ]; then
+            echo "NODE_ENV=production" >> $GITHUB_ENV
+            echo "BRANCH_NAME=main" >> $GITHUB_ENV
+          fi
+
+      # Continue with the deployment steps on the server
+      - name: SSH into server and deploy Docker container
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd ~/repo/sun-empire
+            echo "Successfully logged in to server"
+            git fetch --all
+            git checkout ${{ env.BRANCH_NAME }}
+            git reset --hard origin/${{ env.BRANCH_NAME }}
+            git pull origin ${{ env.BRANCH_NAME }}
+            export NODE_ENV="${{ env.NODE_ENV }}"
+            cp ../.env.sun .env.prod
+            docker-compose up -d --build
+            echo "Deployment completed successfully"
+            docker ps -a

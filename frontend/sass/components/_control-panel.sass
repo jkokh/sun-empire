@@ -1,0 +1,59 @@
+@use 'sass:color'
+@use "../base/variables" as vars
+@use "../misc/mixins" as mix
+
+$menuBackgroundColor: #ffe7aa
+$hoverBackgroundColor: #ffc37a
+$borderColor: #ffa94a
+
+.control-panel
+  padding: 0
+  margin-top: 70px
+
+  section
+    display: flex
+    height: 100%
+
+    .menu-admin-wrapper
+      min-width: 200px
+      padding-top: 40px
+      background-color: $menuBackgroundColor
+
+    .content-wrapper
+      flex-grow: 1
+      padding: 40px
+      background-color: vars.$white
+
+    .menu-admin
+      a
+        color: color.adjust(vars.$mainColor, $lightness: -15%)
+        text-decoration: none
+        height: 100%
+        padding: 8px 12px
+        transition: .3s ease background-color
+        display: flex
+        align-items: center
+
+        &:hover
+          background-color: $hoverBackgroundColor
+
+      svg
+        margin-right: 7px
+
+      li
+        border-bottom: 1px solid $borderColor
+        position: relative
+
+        &.nav-active
+          &:after
+            top: 0
+            right: 0
+            content: ''
+            display: inline-block
+            width: 5px
+            height: 100%
+            position: absolute
+            background-color: vars.$mainColor
+
+        &:first-child
+          border-top: 1px solid $borderColor
