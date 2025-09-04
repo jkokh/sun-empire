@@ -86,3 +86,37 @@ a
     transform: rotate(0deg)
   100%
     transform: rotate(360deg)
+
+.quote
+  font-style: italic
+  font-size: 1.5rem
+  line-height: 1.6
+  margin: 2rem auto
+  max-width: 800px
+  text-align: center
+  color: #f5f5f5
+  position: relative
+
+  &::before,
+  &::after
+    font-size: 3rem
+    color: #999
+    position: absolute
+
+  &::before
+    content: "“"
+    top: -20px
+    left: -20px
+
+  &::after
+    content: "”"
+    bottom: -20px
+    right: -20px
+
+  cite
+    display: block
+    margin-top: 1rem
+    font-size: 1rem
+    font-style: normal
+    color: #ccc
+
